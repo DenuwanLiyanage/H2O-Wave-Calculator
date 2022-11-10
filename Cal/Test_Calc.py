@@ -14,6 +14,10 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(Cal.perform_calculator("10+5*2+4/2"), 22)
         self.assertEqual(Cal.perform_calculator("10+16/4*2-3"), 15)
 
+    def test_perform_calculator_divide_zero(self):
+        self.assertEqual(Cal.perform_calculator("10/0"), "Divide Zero")
+        self.assertEqual(Cal.perform_calculator("10+8-3*7/0+5"), "Divide Zero")
+
 
 if __name__ == '__main__':
     unittest.main()
