@@ -174,7 +174,12 @@ def perform_calculator(input_string):
 
     while '/' in data:
         ind = data.index('/')
-        val = int(data[ind - 1]) // int(data[ind + 1])
+        try:
+            if int(data[ind+1]) == 0:
+                raise ValueError("Divide by Zero")
+            val = int(data[ind - 1]) // int(data[ind + 1])
+        except ValueError:
+            return "Divide Zero"
         data[ind - 1] = val
         del (data[ind])
         del (data[ind])
@@ -195,6 +200,7 @@ def perform_calculator(input_string):
             answer = first_no - int(data[i + 1])
         elif data[i] == '/':
             answer = first_no // int(data[i + 1])
+
         elif data[i] == '*':
             answer = first_no * int(data[i + 1])
         first_no = answer
